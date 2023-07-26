@@ -1,0 +1,96 @@
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+class Student
+{
+    int roll_number;
+    string name;
+    
+    public:
+    Student(int r,string n)
+    {
+        roll_number=r;
+        name=n;
+        cout<<"student details updated"<<endl;
+    }
+    
+    int get_roll(){
+        return roll_number;
+    }
+    
+    string get_name(){
+        return name;
+    }
+};
+
+
+class Exam:public Student
+{
+    int maths;
+    int physics;
+    int chemistry;
+    
+    public:
+    
+    Exam(int roll,string name,int m,int p,int c):Student(roll,name)
+    {
+        maths=m;
+        physics=p;
+        chemistry=c;
+        cout<<"marks updated"<<endl;
+    }
+    
+    int get_math()
+    {
+        return maths;
+    }
+    
+    int get_phy()
+    {
+        return physics;
+    }
+    
+    int get_chem()
+    {
+        return chemistry;
+    }
+    
+    int get_total()
+    {
+        return maths+physics+chemistry;
+    }
+};
+
+
+class Result: public Exam
+{
+    public:
+    Result(int roll,string n,int m,int p,int c):Exam(roll,n,m,p,c)
+    {
+        cout<<"created"<<endl;
+    }
+    
+    
+    void get_result()
+    {
+        cout<<"Name: "<<get_name()<<endl;
+        cout<<"Roll No: "<<get_roll()<<endl;
+        cout<<"Maths: "<<get_math()<<endl;
+        cout<<"Physics: "<<get_phy()<<endl;
+        cout<<"Chemistry: "<<get_chem()<<endl;
+        cout<<"Total: "<<get_total()<<endl;
+    }
+    
+};
+
+int main()
+{
+    Result Kohli= Result(18,"Virat Kohli",45,64,78);
+    Kohli.get_result();
+    return 0;
+}
+
+

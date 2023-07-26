@@ -1,0 +1,82 @@
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+class Student{
+    public:
+        int roll_no;
+        void set_number(int a){
+            roll_no = a;
+        }
+        void print_number(){
+            cout<<"Your roll no is "<< roll_no<<endl;
+        }
+};
+
+int main()
+{
+    Student *s1= new Student();
+    s1->set_number(18);
+    s1->print_number();
+    
+    Student *ptr= new Student[4];
+    for(int i=0;i<4;i++)
+    {
+        ptr[i].set_number(i+1);
+        ptr[i].print_number();
+    }
+    
+}
+
+
+Another Example:
+
+#include<iostream>
+using namespace std;
+
+class ShopItem
+{
+    int id;
+    float price;
+    public:
+        void setData(int a, float b)
+        {
+            id = a;
+            price = b;
+        }
+        
+        void getData(void)
+        {
+            cout<<"Code of this item is "<< id<<endl;
+            cout<<"Price of this item is "<<price<<endl;
+        }
+};
+
+
+int main()
+{
+    int size = 3;
+    ShopItem *ptr = new ShopItem [size];
+    ShopItem *ptrTemp = ptr;
+    for(int i=0;i<3;i++)
+    {
+        int a,b;
+        cout<<"Enter id and price of the item"<<endl;
+        cin>>a>>b;
+        ptr->setData(a,b);
+        ptr++;
+    }
+    
+    for(int i=0;i<3;i++)
+    {
+        ptrTemp->getData();
+        ptrTemp++;
+    }
+}
+
+
+
+
+
+

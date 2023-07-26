@@ -1,0 +1,57 @@
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+class Number{
+    public:
+    int a;
+        Number(){
+            a = 0;
+        }
+
+        Number(int num){
+            a = num;
+        }
+        // When no copy constructor is found, compiler supplies its own copy constructor
+        Number(Number &obj){
+            cout<<"Copy constructor called!!!"<<endl;
+            a = obj.a;
+        }
+
+        void display(){
+            cout<<"The number for this object is "<< a <<endl;
+        }
+};
+
+int main(){
+    Number an(1);
+    
+    Number c;
+    
+    c=an;
+    
+    Number b(an);
+    
+    
+    an.a+=1;
+    
+    b.a+=5;
+    
+    cout<<an.a<<endl;
+    cout<<b.a<<endl;
+    cout<<c.a<<endl;
+
+}
+
+
+Copy Constructor in C++
+A copy constructor is a type of constructor that creates a copy of another object. If we want one object to resemble another object we can use a copy constructor. If no copy constructor is written in the program compiler will supply its own copy constructor. 
+
+
+Note: Due to copy constructor or just by equality operator if value f one object changes then the value of other object doesnt change
+
+
+
+

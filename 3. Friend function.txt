@@ -1,0 +1,119 @@
+
+
+
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+class Base{
+    int b_private;
+    public:
+    int b_public;
+    
+    Base(int x,int y)
+    {
+        b_private=x;
+        b_public=y;
+    }
+    
+    void greet(){
+        cout<<"Hello"<<endl;
+    }
+};
+
+class Derived:public Base{
+    int d_private;
+    public:
+    int d_public;
+    
+    Derived(int x,int y,int z=0,int w=0):Base(z,w)
+    {
+        d_private=x;
+        d_public=y;
+    }
+    
+    friend Derived sum(Derived d1,Derived d2);
+};
+
+
+Derived sum(Derived d1,Derived d2)
+{
+    Derived n= Derived(d1.d_private+d2.d_private,d1.d_public+d2.d_public);
+    return n;
+}
+
+int main()
+{
+    Derived d1= Derived(1,2,3,4);
+    Derived d2= Derived(5,6,7,8);
+    
+    Derived n= sum(d1,d2);
+    cout<<n.d_public;
+}
+
+
+
+
+another example:
+
+class c2;
+
+class c1{
+    int val1;
+    friend void exchange(c1 & , c2 &);
+    public:
+        void indata(int a){
+            val1 = a;
+        }
+
+        void display(void){
+            cout<< val1 <<endl;
+        }
+};
+
+class c2{
+    int val2;
+    friend void exchange(c1 &, c2 &);
+    public:
+        void indata(int a){
+            val2 = a;
+        }
+
+        void display(void){
+            cout<< val2 <<endl;
+        }
+};
+
+void exchange(c1 &x, c2 &y){
+    int tmp = x.val1;
+    x.val1 = y.val2;
+    y.val2 = tmp;
+}
+
+
+
+
+
+
+
+
+
+
+Friend Function in C++:
+Friend functions are those functions that have the right to access the private data members of class even though they are not defined inside the class. It is necessary to write the prototype of the friend function. One main thing to note here is that if we have written the prototype for the friend function in the class it will not make that function a member of the class
+
+Properties of Friend Function
+Not in the scope of the class
+Since it is not in the scope of the class, it cannot be called from the object of that class, for example, sumComplex() is invalid
+*****A friend function can be invoked without the help of any object
+Usually contain objects as arguments
+*****Can be declared under the public or private access modifier, it will not make any difference
+It cannot access the members directly by their names, it needs (object_name.member_name) to access any member.
+
+
+
+
+
+
+
